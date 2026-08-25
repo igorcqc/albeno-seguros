@@ -1,0 +1,513 @@
+/* =========================================================================
+   Albeno Seguros — Landing Page (Seguro para moto)
+   Identidade visual: Sora + Navy / Azul / Laranja / Off-white
+   ========================================================================= */
+
+:root {
+  /* Paleta oficial */
+  --navy: #082941;
+  --blue: #03a6f2;
+  --orange: #f18320;
+  --offwhite: #fdfbfa;
+  --orange-bg: #fff1e2;
+  --blue-bg: #e6f7ff;
+
+  /* Derivados (apenas transparências/misturas das cores oficiais) */
+  --navy-80: rgba(8, 41, 65, 0.8);
+  --navy-60: rgba(8, 41, 65, 0.6);
+  --navy-12: rgba(8, 41, 65, 0.12);
+  --navy-08: rgba(8, 41, 65, 0.08);
+  --on-navy: rgba(253, 251, 250, 0.78);
+  --on-navy-soft: rgba(253, 251, 250, 0.58);
+
+  --maxw: 1140px;
+  --gutter: 22px;
+  --radius: 14px;
+
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--offwhite);
+  color: var(--navy);
+  font-family: "Sora", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, p, ul, ol { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Acessibilidade ------------------------------------------------------- */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 99;
+  background: var(--orange);
+  color: #fff;
+  padding: 12px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 0 0 8px 0;
+}
+.skip-link:focus { left: 0; }
+
+:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* =========================================================================
+   Header
+   ========================================================================= */
+.site-header {
+  background: var(--navy);
+  color: var(--offwhite);
+}
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 62px;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+}
+.brand__mark {
+  display: inline-flex;
+  width: 22px;
+  color: var(--orange);
+}
+.brand__mark svg { width: 100%; height: auto; display: block; }
+.brand__name {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.site-header__tag {
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--on-navy-soft);
+}
+
+/* =========================================================================
+   Tipografia utilitária
+   ========================================================================= */
+.eyebrow {
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--orange);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.eyebrow::before {
+  content: "";
+  width: 22px;
+  height: 1px;
+  background: var(--orange);
+  flex: none;
+}
+.eyebrow--dark { color: var(--orange); }
+
+.section__title {
+  font-size: clamp(24px, 5.2vw, 34px);
+  font-weight: 700;
+  line-height: 1.22;
+  letter-spacing: -0.025em;
+  max-width: 18ch;
+}
+.section__lead {
+  margin-top: 16px;
+  font-size: 15.5px;
+  color: var(--navy-80);
+  max-width: 46ch;
+}
+
+/* =========================================================================
+   Botões
+   ========================================================================= */
+.btn {
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  border: 0;
+  border-radius: 10px;
+  padding: 17px 30px;
+  min-height: 56px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.25s var(--ease), transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+.btn--primary {
+  background: var(--orange);
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(241, 131, 32, 0.22);
+}
+.btn--primary:hover {
+  background: #e0760f;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(241, 131, 32, 0.26);
+}
+.btn--primary:active { transform: translateY(0); }
+
+.cta-note {
+  margin-top: 12px;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--on-navy-soft);
+}
+.cta-note--dark { color: var(--navy-60); }
+
+.disclaimer {
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--navy-60);
+}
+
+/* =========================================================================
+   Hero
+   ========================================================================= */
+.hero {
+  position: relative;
+  background: var(--navy);
+  color: var(--offwhite);
+  overflow: hidden;
+  isolation: isolate;
+}
+.hero__inner {
+  position: relative;
+  z-index: 2;
+  padding-top: 62px;
+  padding-bottom: 72px;
+}
+
+.hero__title {
+  margin-top: 22px;
+  font-size: clamp(32px, 8.6vw, 60px);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+.hero__title em {
+  font-style: normal;
+  font-weight: 300;
+  color: var(--on-navy);
+}
+.hero__title br { display: none; }
+
+.hero__sub {
+  margin-top: 22px;
+  font-size: 16.5px;
+  color: var(--on-navy);
+  max-width: 44ch;
+}
+
+.hero__cta { margin-top: 34px; }
+.hero__cta .btn { width: 100%; }
+
+.hero__filter {
+  margin-top: 34px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(253, 251, 250, 0.14);
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--on-navy-soft);
+  max-width: 52ch;
+}
+
+/* Composição gráfica do hero (sem imagem) */
+.hero__art {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+.hero__glow {
+  position: absolute;
+  right: -22%;
+  top: -30%;
+  width: 78vw;
+  height: 78vw;
+  max-width: 720px;
+  max-height: 720px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, rgba(3, 166, 242, 0.22), rgba(3, 166, 242, 0) 68%);
+}
+.hero__arc {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(253, 251, 250, 0.1);
+}
+.hero__arc--1 {
+  right: -34%;
+  top: -14%;
+  width: 92vw;
+  height: 92vw;
+  max-width: 660px;
+  max-height: 660px;
+}
+.hero__arc--2 {
+  right: -14%;
+  top: 12%;
+  width: 58vw;
+  height: 58vw;
+  max-width: 420px;
+  max-height: 420px;
+  border-color: rgba(241, 131, 32, 0.2);
+}
+.hero__line {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--orange) 0%, var(--orange) 22%, rgba(3, 166, 242, 0.35) 22%, rgba(3, 166, 242, 0) 100%);
+}
+
+/* =========================================================================
+   Seções
+   ========================================================================= */
+.section { padding-block: 64px; }
+
+/* Identificação --------------------------------------------------------- */
+.pillars {
+  margin-top: 42px;
+  display: grid;
+  gap: 30px;
+}
+.pillar {
+  padding-top: 22px;
+  border-top: 1px solid var(--navy-12);
+}
+.pillar__icon {
+  display: inline-flex;
+  width: 26px;
+  color: var(--orange);
+  margin-bottom: 14px;
+}
+.pillar__icon svg { width: 100%; height: auto; display: block; }
+.pillar__title {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+.pillar__text {
+  margin-top: 8px;
+  font-size: 14.5px;
+  color: var(--navy-80);
+  max-width: 34ch;
+}
+
+/* Como funciona --------------------------------------------------------- */
+.section--steps {
+  background: var(--blue-bg);
+  border-block: 1px solid rgba(3, 166, 242, 0.16);
+}
+.steps { margin-top: 40px; }
+.step {
+  display: flex;
+  gap: 20px;
+  padding-block: 24px;
+  border-top: 1px solid rgba(8, 41, 65, 0.1);
+}
+.step:first-child { border-top: 0; padding-top: 0; }
+.step:last-child { padding-bottom: 0; }
+.step__num {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--orange);
+  padding-top: 3px;
+  flex: none;
+  min-width: 30px;
+}
+.step__title {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+.step__text {
+  margin-top: 6px;
+  font-size: 14.5px;
+  color: var(--navy-80);
+  max-width: 42ch;
+}
+
+/* Pré-qualificação ------------------------------------------------------ */
+.qualify {
+  background: var(--orange-bg);
+  border: 1px solid rgba(241, 131, 32, 0.28);
+  border-radius: var(--radius);
+  padding: 34px 26px;
+}
+.qualify__title {
+  font-size: clamp(22px, 5vw, 30px);
+  font-weight: 700;
+  line-height: 1.24;
+  letter-spacing: -0.025em;
+  max-width: 20ch;
+}
+.qualify__text {
+  margin-top: 16px;
+  font-size: 15.5px;
+  color: var(--navy-80);
+  max-width: 50ch;
+}
+.qualify__action { margin-top: 30px; }
+.qualify__action .btn { width: 100%; }
+
+/* =========================================================================
+   Footer
+   ========================================================================= */
+.site-footer {
+  background: var(--navy);
+  color: var(--offwhite);
+  padding-block: 34px;
+}
+.site-footer__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.site-footer__brand {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.site-footer__text {
+  margin-top: 6px;
+  font-size: 13.5px;
+  color: var(--on-navy-soft);
+  max-width: 42ch;
+}
+.site-footer__legal {
+  font-size: 12px;
+  color: var(--on-navy-soft);
+  padding-top: 16px;
+  border-top: 1px solid rgba(253, 251, 250, 0.12);
+}
+
+/* =========================================================================
+   Animações de entrada
+   ========================================================================= */
+/* Escopo em .js: sem JavaScript o conteúdo nunca fica invisível. */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+  transition-delay: calc(var(--d, 0) * 90ms);
+}
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+.reveal[data-delay="1"] { --d: 1; }
+.reveal[data-delay="2"] { --d: 2; }
+.reveal[data-delay="3"] { --d: 3; }
+.reveal[data-delay="4"] { --d: 4; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  .btn { transition: none; }
+  .btn--primary:hover { transform: none; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* =========================================================================
+   Breakpoints
+   ========================================================================= */
+@media (min-width: 600px) {
+  :root { --gutter: 32px; }
+
+  .hero__cta { display: flex; flex-direction: column; align-items: flex-start; }
+  .hero__cta .btn { width: auto; min-width: 260px; }
+  .qualify__action .btn { width: auto; min-width: 260px; }
+  .qualify { padding: 40px 38px; }
+}
+
+@media (min-width: 860px) {
+  .section { padding-block: 96px; }
+
+  .site-header__inner { min-height: 74px; }
+
+  .hero__inner {
+    padding-top: 88px;
+    padding-bottom: 96px;
+  }
+  .hero__title { font-size: 50px; }
+  .hero__title br { display: inline; }
+  .hero__sub { font-size: 17.5px; }
+  .hero__filter { margin-top: 44px; }
+
+  .pillars {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 34px;
+    margin-top: 54px;
+  }
+
+  .steps__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    gap: 64px;
+    align-items: start;
+  }
+  .steps { margin-top: 0; }
+
+  .qualify {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) auto;
+    gap: 48px;
+    align-items: center;
+    padding: 52px 48px;
+  }
+  .qualify__action { margin-top: 0; text-align: right; }
+  .qualify__action .btn { min-width: 280px; }
+  .qualify__action .disclaimer { max-width: 28ch; margin-left: auto; }
+
+  .site-footer { padding-block: 44px; }
+  .site-footer__inner {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+  .site-footer__legal { border-top: 0; padding-top: 0; }
+}
+
+@media (min-width: 1100px) {
+  .hero__title { font-size: 56px; }
+  .steps__grid { gap: 96px; }
+}
