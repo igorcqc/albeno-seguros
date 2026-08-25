@@ -386,6 +386,151 @@ ul, ol { padding: 0; list-style: none; }
 .qualify__action .btn { width: 100%; }
 
 /* =========================================================================
+   Modal de captura (nome + WhatsApp)
+   ========================================================================= */
+.modal[hidden] { display: none; }
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0;
+}
+
+.modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 41, 65, 0.62);
+  backdrop-filter: blur(2px);
+  animation: modal-fade 0.25s var(--ease);
+}
+
+.modal__dialog {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  max-height: 92vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: var(--offwhite);
+  border-radius: 16px 16px 0 0;
+  padding: 32px 24px calc(28px + env(safe-area-inset-bottom, 0px));
+  box-shadow: 0 -12px 40px rgba(8, 41, 65, 0.22);
+  animation: modal-up 0.3s var(--ease);
+}
+/* Foco programático ao abrir: não precisa de anel visível no cartão inteiro. */
+.modal__dialog:focus { outline: none; }
+
+.modal__close {
+  position: absolute;
+  top: 14px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--navy-60);
+  cursor: pointer;
+  transition: background-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+.modal__close svg { width: 20px; height: 20px; }
+.modal__close:hover { background: var(--navy-08); color: var(--navy); }
+
+.modal__title {
+  margin-top: 14px;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.24;
+  letter-spacing: -0.025em;
+  max-width: 20ch;
+}
+.modal__desc {
+  margin-top: 12px;
+  font-size: 14.5px;
+  color: var(--navy-80);
+}
+
+/* Formulário ------------------------------------------------------------ */
+.form { margin-top: 24px; }
+
+.field + .field { margin-top: 16px; }
+
+.field__label {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--navy-80);
+  margin-bottom: 7px;
+}
+
+.field__input {
+  width: 100%;
+  font-family: inherit;
+  font-size: 16px; /* 16px evita zoom automático no iOS */
+  font-weight: 400;
+  color: var(--navy);
+  background: #fff;
+  border: 1px solid var(--navy-12);
+  border-radius: 10px;
+  padding: 15px 16px;
+  min-height: 54px;
+  transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+  -webkit-appearance: none;
+  appearance: none;
+}
+.field__input::placeholder { color: rgba(8, 41, 65, 0.38); }
+.field__input:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(3, 166, 242, 0.16);
+}
+.field__input:focus-visible { outline: none; }
+
+.field__input[aria-invalid="true"] {
+  border-color: #c2410c;
+  box-shadow: 0 0 0 3px rgba(194, 65, 12, 0.12);
+}
+
+.field__error {
+  margin-top: 7px;
+  font-size: 12.5px;
+  font-weight: 400;
+  color: #c2410c;
+}
+.field__error[hidden] { display: none; }
+
+.btn--block { width: 100%; margin-top: 24px; }
+
+.btn[aria-busy="true"] { opacity: 0.75; pointer-events: none; }
+
+.form__note {
+  margin-top: 14px;
+  font-size: 12.5px;
+  color: var(--navy-60);
+}
+.form__note + .disclaimer { margin-top: 6px; }
+
+@keyframes modal-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes modal-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Trava de rolagem enquanto o modal está aberto */
+body.is-locked { overflow: hidden; }
+
+/* =========================================================================
    Footer
    ========================================================================= */
 .site-footer {
@@ -457,6 +602,14 @@ ul, ol { padding: 0; list-style: none; }
   .hero__cta .btn { width: auto; min-width: 260px; }
   .qualify__action .btn { width: auto; min-width: 260px; }
   .qualify { padding: 40px 38px; }
+
+  .modal { align-items: center; padding: 24px; }
+  .modal__dialog {
+    border-radius: 16px;
+    padding: 38px 36px 32px;
+    box-shadow: 0 24px 60px rgba(8, 41, 65, 0.26);
+  }
+  .modal__title { font-size: 24px; }
 }
 
 @media (min-width: 860px) {

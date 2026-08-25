@@ -210,6 +210,52 @@
   </div>
 </footer>
 
+<!-- ================= MODAL DE CAPTURA ================= -->
+<div class="modal" id="modal" hidden>
+  <div class="modal__backdrop" data-modal-close></div>
+
+  <div class="modal__dialog" id="modal-dialog" role="dialog" aria-modal="true" tabindex="-1"
+       aria-labelledby="modal-title" aria-describedby="modal-desc">
+    <button type="button" class="modal__close" data-modal-close aria-label="Fechar">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
+
+    <p class="eyebrow eyebrow--dark">Cotação de seguro</p>
+    <h2 class="modal__title" id="modal-title">Falta pouco para falar com a nossa equipe.</h2>
+    <p class="modal__desc" id="modal-desc">
+      Informe seu nome e o seu WhatsApp. Em seguida você será direcionado para a conversa
+      com um dos nossos atendentes.
+    </p>
+
+    <form class="form" id="lead-form" novalidate>
+      <div class="field">
+        <label class="field__label" for="lead-nome">Nome</label>
+        <input class="field__input" id="lead-nome" name="nome" type="text"
+               autocomplete="name" placeholder="Como podemos te chamar"
+               required aria-describedby="erro-nome">
+        <p class="field__error" id="erro-nome" hidden>Informe o seu nome.</p>
+      </div>
+
+      <div class="field">
+        <label class="field__label" for="lead-whatsapp">WhatsApp com DDD</label>
+        <input class="field__input" id="lead-whatsapp" name="whatsapp" type="tel"
+               inputmode="numeric" autocomplete="tel-national" placeholder="(11) 99999-9999"
+               maxlength="16" required aria-describedby="erro-whatsapp">
+        <p class="field__error" id="erro-whatsapp" hidden>Informe um número de WhatsApp válido com DDD.</p>
+      </div>
+
+      <button type="submit" class="btn btn--primary btn--block" id="lead-submit">
+        Continuar para o WhatsApp
+      </button>
+
+      <p class="form__note">
+        Usamos esses dados apenas para retornar o seu contato sobre a cotação.
+      </p>
+      <p class="disclaimer">Sujeito a análise e orçamento sem compromisso.</p>
+    </form>
+  </div>
+</div>
+
 <script src="./script.js" defer></script>
 </body>
 </html>
