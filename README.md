@@ -52,8 +52,8 @@ Outros ajustes no mesmo bloco:
 Exemplo de mensagem recebida no WhatsApp:
 
 ```
-Olá! Meu nome é Igor Pacheco. Vim pela página de seguro para moto da Albeno
-e gostaria de receber uma cotação para a minha moto.
+Olá! Meu nome é Igor Pacheco. Vim pela página de seguro para moto e gostaria
+de receber uma cotação para a minha moto.
 
 (LP Seguro Moto | secao: hero | origem: facebook | campanha: moto_frio | anuncio: criativo_a)
 ```

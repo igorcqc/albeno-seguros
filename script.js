@@ -14,7 +14,7 @@
 
   // Mensagem inicial enviada pelo usuário.
   var WHATSAPP_MESSAGE =
-    "Olá! Vim pela página de seguro para moto da Albeno e gostaria de receber uma cotação para a minha moto.";
+    "Olá! Vim pela página de seguro para moto e gostaria de receber uma cotação para a minha moto.";
 
   // Identificador fixo da origem — facilita reconhecer leads desta landing page.
   var LEAD_SOURCE = "LP Seguro Moto";
