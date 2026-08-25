@@ -166,8 +166,9 @@ da mensagem do WhatsApp. Se não existirem, nada quebra.
 
 ## 7. Pendências para publicação
 
-- Preencher `WHATSAPP_NUMBER` em `script.js`.
-- Publicar a planilha e preencher `SHEET_ENDPOINT` em `script.js`.
+- ~~Preencher `WHATSAPP_NUMBER` em `script.js`~~ (`558399180369`).
+- ~~Publicar a planilha e preencher `SHEET_ENDPOINT`~~ (feito).
+- Enviar um lead de teste e confirmar a linha na aba `Leads`.
 - Colar Meta Pixel e/ou GTM em `index.html`.
 - Configurar a campanha para otimizar pelo evento `Lead`.
 - Substituir o favicon inline por `assets/favicon.svg` (opcional).

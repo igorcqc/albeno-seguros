@@ -10,7 +10,7 @@
      ======================================================================= */
 
   // Número do WhatsApp com DDI + DDD, somente dígitos. Ex.: "5511999999999"
-  var WHATSAPP_NUMBER = "SEU_NUMERO_AQUI";
+  var WHATSAPP_NUMBER = "558399180369";
 
   // Mensagem inicial enviada pelo usuário.
   var WHATSAPP_MESSAGE =
@@ -24,7 +24,8 @@
 
   // Planilha: URL do app publicado no Google Apps Script (ver google-apps-script/README).
   // Enquanto estiver vazio, o formulário funciona normalmente e nada é enviado.
-  var SHEET_ENDPOINT = "";
+  var SHEET_ENDPOINT =
+    "https://script.google.com/macros/s/AKfycbwWx4T49r3_6ToJRnVAKJ_-_V7XEi48NiElevy-TipHjypUOiR8JuAUzmNcbGbjL2Zv/exec";
 
   // Parâmetros de campanha preservados durante a navegação.
   var TRACKED_PARAMS = [
