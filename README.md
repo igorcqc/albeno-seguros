@@ -18,9 +18,10 @@ google-apps-script/Codigo.gs  recebimento dos leads na planilha do Google
 Meta Ads → Landing Page → [modal: nome + WhatsApp] → planilha + evento Lead → WhatsApp
 ```
 
-Os dois CTAs abrem o mesmo modal. O redirecionamento para o WhatsApp só
-acontece depois do envio, o que garante que todo lead atendido também está
-registrado na planilha e contabilizado como conversão.
+Os dois CTAs abrem o mesmo modal. O redirecionamento só acontece depois do
+envio, o que garante que todo lead atendido também está registrado na planilha
+e contabilizado como conversão. Depois do envio o modal troca para uma
+confirmação com link de reserva, caso o navegador bloqueie a janela nova.
 
 ---
 
@@ -52,8 +53,8 @@ Outros ajustes no mesmo bloco:
 Exemplo de mensagem recebida no WhatsApp:
 
 ```
-Olá! Meu nome é Igor Pacheco. Vim pela página de seguro para moto e gostaria
-de receber uma cotação para a minha moto.
+Olá! Meu nome é Igor Pacheco. Acabei de fazer uma simulação no site e quero
+continuar a cotação do seguro da minha moto.
 
 (LP Seguro Moto | secao: hero | origem: facebook | campanha: moto_frio | anuncio: criativo_a)
 ```
@@ -130,6 +131,22 @@ da mensagem do WhatsApp. Se não existirem, nada quebra.
 
 ## 6. Decisões de CRO
 
+### Linha de raciocínio da copy
+
+A página encadeia cinco etapas mentais, uma por bloco:
+
+1. **Hero** — "estou no lugar certo, e existe um número que eu não sei."
+   A headline abre uma lacuna de informação (*quanto custa*) em vez de prometer
+   proteção genérica, e o "antes de precisar do seguro" carrega a perda sem
+   citar tragédia.
+2. **Conexão** — "a moto resolve o meu dia; se sair de circulação, a conta é
+   minha." Aversão à perda contida: cenários reais, nenhuma estatística.
+3. **Benefícios** — consequências, não características: saber o valor, entender
+   o que está incluído, decidir sem pressa.
+4. **Como funciona** — remove a objeção da contratação forçada logo no título.
+5. **CTA de decisão** — encerra o raciocínio com esforço declarado
+   ("menos de um minuto", "dois campos agora").
+
 - **Formulário curto como filtro final.** Nome e WhatsApp são o mínimo para
   qualificar sem criar fricção: quem digita o próprio telefone está declarando
   intenção real. Curioso não preenche.
@@ -137,16 +154,16 @@ da mensagem do WhatsApp. Se não existirem, nada quebra.
   atendido fique fora da planilha nem da otimização da campanha.
 - **Evento `Lead` no envio, nunca no clique**, para o Meta aprender com quem
   realmente deixou contato em vez de com quem apenas tocou no botão.
-- **Duas barreiras conscientes de intenção.** O CTA do hero e o do bloco de
-  pré-qualificação exigem cliques distintos, com textos diferentes
-  (“Simular meu seguro” / “Quero simular meu seguro”). Quem chegou por engano
-  no anúncio não passa das primeiras linhas.
-- **Microcopy de filtro, não de bloqueio.** Abaixo do hero: *“Atendimento
-  voltado a quem quer conhecer as opções de seguro para a própria moto…”*.
-  Define o público sem tom negativo.
-- **Redução de fricção logo depois do filtro.** O bloco “Como funciona” deixa
-  claro que falar com a equipe não gera contratação nem cobrança — filtrar
-  curioso sem afastar quem tem intenção real.
+- **Duas barreiras conscientes de intenção.** Os dois CTAs exigem cliques
+  distintos e o formulário exige um terceiro. Quem chegou por engano no anúncio
+  não passa das primeiras linhas.
+- **Microcopy de filtro, não de bloqueio.** Abaixo do hero: *“A simulação é
+  para quem tem uma moto e quer saber quanto custaria protegê-la.”* Define o
+  público por autoidentificação, sem tom negativo.
+- **Objeção da contratação derrubada no título**, não numa nota de rodapé:
+  *“Três passos, e nenhum deles obriga você a contratar.”*
+- **Confirmação depois do envio** (“Tudo certo, {nome}”), que também serve de
+  plano B quando o navegador in-app bloqueia a janela do WhatsApp.
 - **Contexto antes do clique.** Nenhum número de telefone aparece na página; o
   usuário só chega ao WhatsApp pelo botão, o que garante que ele leu a
   proposta antes de abrir a conversa.

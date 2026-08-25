@@ -518,6 +518,29 @@ ul, ol { padding: 0; list-style: none; }
 }
 .form__note + .disclaimer { margin-top: 6px; }
 
+/* Confirmação após o envio ---------------------------------------------- */
+.success[hidden],
+.modal__step[hidden] { display: none; }
+
+.success {
+  padding-top: 8px;
+  animation: modal-fade 0.3s var(--ease);
+}
+.success__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--orange-bg);
+  color: var(--orange);
+  margin-bottom: 18px;
+}
+.success__mark svg { width: 24px; height: 24px; }
+.success .modal__title { margin-top: 0; }
+.success .btn { text-decoration: none; margin-top: 26px; }
+
 @keyframes modal-fade {
   from { opacity: 0; }
   to { opacity: 1; }

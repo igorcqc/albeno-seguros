@@ -14,7 +14,7 @@
 
   // Mensagem inicial enviada pelo usuário.
   var WHATSAPP_MESSAGE =
-    "Olá! Vim pela página de seguro para moto e gostaria de receber uma cotação para a minha moto.";
+    "Olá! Acabei de fazer uma simulação no site e quero continuar a cotação do seguro da minha moto.";
 
   // Identificador fixo da origem — facilita reconhecer leads desta landing page.
   var LEAD_SOURCE = "LP Seguro Moto";
@@ -185,6 +185,8 @@
 
     var win = window.open(url, "_blank", "noopener");
     if (!win) window.location.href = url;
+
+    return url;
   }
 
   // Exposto para uso manual/depuração, se necessário.
@@ -255,16 +257,25 @@
   var modal = document.getElementById("modal");
   var dialog = document.getElementById("modal-dialog");
   var form = document.getElementById("lead-form");
+  var step = document.getElementById("lead-step");
+  var success = document.getElementById("lead-success");
+  var successTitle = document.getElementById("success-title");
+  var successLink = document.getElementById("success-link");
   var inputNome = document.getElementById("lead-nome");
   var inputWhats = document.getElementById("lead-whatsapp");
   var lastFocused = null;
   var currentOrigin = "indefinido";
+  var submitted = false;
 
   var FOCUSABLE = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
 
   function openModal(origin) {
     currentOrigin = origin || "indefinido";
     lastFocused = document.activeElement;
+
+    step.hidden = false;
+    success.hidden = true;
+    submitted = false;
 
     modal.hidden = false;
     document.body.classList.add("is-locked");
@@ -290,7 +301,10 @@
     document.body.classList.remove("is-locked");
     document.removeEventListener("keydown", onModalKeydown);
 
-    if (reason === "abandono") track("LeadFormAbandon", { cta_origin: currentOrigin });
+    // Fechar a confirmação depois de enviar não é abandono.
+    if (reason === "abandono" && !submitted) {
+      track("LeadFormAbandon", { cta_origin: currentOrigin });
+    }
     if (lastFocused && lastFocused.focus) lastFocused.focus();
   }
 
@@ -404,11 +418,22 @@
 
     saveLead(lead);
 
-    // Aberto de forma síncrona, ainda dentro do gesto do usuário.
-    openWhatsApp(lead);
+    // Aberto de forma síncrona, ainda dentro do gesto do usuário: qualquer espera
+    // aqui faria o navegador in-app bloquear a janela do WhatsApp.
+    var url = openWhatsApp(lead);
 
-    closeModal("enviado");
+    // Confirmação: fica visível para quem volta do WhatsApp e serve de plano B
+    // caso a janela tenha sido bloqueada.
+    var primeiroNome = lead.nome.split(" ")[0];
+    successTitle.textContent = "Tudo certo, " + primeiroNome + ".";
+    if (url) successLink.href = url;
+
+    submitted = true;
     form.reset();
+    step.hidden = true;
+    success.hidden = false;
+    dialog.scrollTop = 0;
+    successLink.focus();
   });
 
   /* =======================================================================
