@@ -76,19 +76,16 @@ lead segue para o WhatsApp normalmente — apenas nada é gravado.
 
 ---
 
-## 3. Onde inserir Meta Pixel e Google Tag Manager
+## 3. Meta Pixel e Google Tag Manager
 
-Em `index.html`, dentro do `<head>`, no bloco comentado:
+**Meta Pixel: instalado.** ID `2521791765007369`, no `<head>` de `index.html`,
+entre `<!-- INICIO META PIXEL -->` e `<!-- FIM META PIXEL -->`. Dispara
+`PageView` no carregamento. Para trocar o ID, altere os dois lugares onde ele
+aparece (o `fbq('init', ...)` e a URL do `<noscript>`).
 
-```html
-<!-- INICIO META PIXEL -->
-<!-- INICIO GOOGLE TAG MANAGER -->
-<!-- FIM TAGS -->
-```
-
-Cole ali o snippet oficial de cada ferramenta. Se usar GTM, o `<noscript>`
-correspondente vai logo após a abertura do `<body>` (já há um comentário
-marcando o local).
+**GTM: ainda não instalado.** Cole o snippet do `<head>` no bloco
+`<!-- INICIO GOOGLE TAG MANAGER -->` e o `<noscript>` correspondente logo após
+a abertura do `<body>` (já há um comentário marcando o local).
 
 Nada mais precisa ser alterado: `script.js` detecta `window.fbq` e
 `window.dataLayer` em tempo de execução. Sem tags instaladas, a página
@@ -186,7 +183,7 @@ A página encadeia cinco etapas mentais, uma por bloco:
 - ~~Preencher `WHATSAPP_NUMBER` em `script.js`~~ (`558399180369`).
 - ~~Publicar a planilha e preencher `SHEET_ENDPOINT`~~ (feito).
 - Enviar um lead de teste e confirmar a linha na aba `Leads`.
-- Colar Meta Pixel e/ou GTM em `index.html`.
+- ~~Colar o Meta Pixel~~ (ID `2521791765007369`, instalado).
 - Configurar a campanha para otimizar pelo evento `Lead`.
 - Substituir o favicon inline por `assets/favicon.svg` (opcional).
 - Adicionar `assets/og-image.jpg` (1200×630) para o compartilhamento social.

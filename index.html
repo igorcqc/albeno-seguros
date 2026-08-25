@@ -33,15 +33,32 @@
 <link rel="stylesheet" href="./styles.css">
 
 <!-- =====================================================================
-     TRACKING — INSERIR TAGS AQUI
+     TRACKING
      ---------------------------------------------------------------------
-     1) Meta Pixel: cole o snippet oficial abaixo (ele define window.fbq).
-     2) Google Tag Manager: cole o snippet <head> do GTM abaixo
+     1) Meta Pixel: instalado (ID 2521791765007369). Para trocar o ID,
+        altere os dois lugares onde ele aparece no bloco abaixo.
+     2) Google Tag Manager: cole o snippet <head> do GTM no bloco marcado
         (e o <noscript> logo após a abertura do <body>).
      O arquivo script.js detecta automaticamente fbq / dataLayer e dispara
      os eventos. Nada mais precisa ser alterado.
      ===================================================================== -->
 <!-- INICIO META PIXEL -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2521791765007369');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" alt=""
+src="https://www.facebook.com/tr?id=2521791765007369&ev=PageView&noscript=1"></noscript>
+<!-- FIM META PIXEL -->
+
 <!-- INICIO GOOGLE TAG MANAGER -->
 <!-- FIM TAGS -->
 </head>
