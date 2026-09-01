@@ -15,7 +15,7 @@ google-apps-script/Codigo.gs  recebimento dos leads na planilha do Google
 ## Fluxo
 
 ```
-Meta Ads → Landing Page → [modal: nome + WhatsApp] → planilha + evento Lead → WhatsApp
+Meta Ads → Landing Page → [modal: nome + WhatsApp] → planilha + webhook + evento Lead → WhatsApp
 ```
 
 Os dois CTAs abrem o mesmo modal. O redirecionamento só acontece depois do
@@ -64,7 +64,7 @@ veio, mesmo sem CRM.
 
 ---
 
-## 2. Planilha de leads
+## 2. Planilha de leads e webhook
 
 O passo a passo completo está em
 [`google-apps-script/README.md`](./google-apps-script/README.md). Resumindo:
@@ -73,6 +73,12 @@ app da web e cole a URL em `SHEET_ENDPOINT` (`script.js`).
 
 Enquanto `SHEET_ENDPOINT` estiver vazio o formulário continua funcionando e o
 lead segue para o WhatsApp normalmente — apenas nada é gravado.
+
+Depois de gravar a linha, o Apps Script repassa o lead para o webhook da
+Metrifiquei (`WEBHOOK_URL`, no topo do `Codigo.gs`), que notifica o cliente.
+O envio é feito no servidor, com `application/json` de verdade, e um erro ali
+nunca derruba a gravação nem o atendimento. Detalhes e formato do payload em
+[`google-apps-script/README.md`](./google-apps-script/README.md).
 
 ---
 
